@@ -7,13 +7,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ToDoListViewProtocol: AnyObject {
+    
+}
 
+class ToDoListViewController: UIViewController {
+    
+    var presenter: ToDoListPresenterProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
+extension ToDoListViewController: ToDoListViewProtocol {
+    
+}
