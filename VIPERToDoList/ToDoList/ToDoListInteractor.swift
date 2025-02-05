@@ -9,7 +9,7 @@ import Foundation
 
 protocol ToDoListInteractorProtocol: AnyObject {
     func loadToDoList()
-    func searchToDoList(query: String)
+    func search(in todos: [ToDoEntity], with query: String) -> [ToDoEntity]
 }
 
 class ToDoListInteractor {
@@ -34,7 +34,18 @@ extension ToDoListInteractor: ToDoListInteractorProtocol {
         }
     }
     
-    func searchToDoList(query: String) {
-        //TODO: реализовать
+    func search(in todos: [ToDoEntity], with query: String) -> [ToDoEntity] {
+        guard !query.isEmpty else { return todos }
+        
+        return todos.filter { $0.title.lowercased().contains(query.lowercased())
+            || (($0.description?.lowercased().contains(query.lowercased())) != nil)
+            || formatDate($0.createdAt).contains(query.lowercased())
+        }
     }
+    
+    private func formatDate(_ date: Date) -> String { //TODO: повтор кода
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yy"
+            return formatter.string(from: date)
+        }
 }

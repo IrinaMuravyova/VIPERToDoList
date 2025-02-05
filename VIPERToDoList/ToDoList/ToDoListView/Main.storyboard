@@ -119,6 +119,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Задачи" largeTitleDisplayMode="always" id="9cP-YN-USh"/>
                     <connections>
+                        <outlet property="searchBar" destination="3IR-Ih-yy2" id="uwa-AU-m9M"/>
                         <outlet property="tableView" destination="G7h-8j-IVt" id="Vae-2R-AOz"/>
                         <outlet property="todosCountToolBarItem" destination="8Qc-Iw-mzH" id="aPW-HG-VZO"/>
                     </connections>

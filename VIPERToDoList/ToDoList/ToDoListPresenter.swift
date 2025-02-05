@@ -15,6 +15,7 @@ protocol ToDoListPresenterProtocol: AnyObject {
 }
 
 class ToDoListPresenter {
+    private var allTodos: [ToDoEntity] = [] // Хранит переданный список задач
     weak var view: ToDoListViewProtocol?
     var router: ToDoListRouterProtocol
     var interactor: ToDoListInteractorProtocol
@@ -31,12 +32,15 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
         interactor.loadToDoList()
     }
     
+    // Сохранение списка задач при загрузке экрана
     func didLoadToDoList(_ toDoList: [ToDoEntity]) {
-        view?.showToDoList(toDoList)
+        self.allTodos = toDoList
+        view?.displayTodos(allTodos)
     }
     
-    func didSearch(query: String) {
-        interactor.searchToDoList(query: query)
+    func didSearch( query: String) {
+        let filteredTodos = interactor.search(in: allTodos, with: query)
+        view?.displayTodos(filteredTodos)
     }
     
     func todosCountString(_ todosCount: Int) {

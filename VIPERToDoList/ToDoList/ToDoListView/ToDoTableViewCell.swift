@@ -43,6 +43,10 @@ class ToDoTableViewCell: UITableViewCell {
         } else {
             completedImage.image = UIImage(systemName: "circle")
             completedImage.tintColor = UIColor(.gray)
+            
+            titleLabel.attributedText = nil
+            descriptionLabel.attributedText = nil
+            
             titleLabel.text = todo.title
             descriptionLabel.text = todo.description
         }

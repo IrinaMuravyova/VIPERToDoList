@@ -8,13 +8,14 @@
 import UIKit
 
 protocol ToDoListViewProtocol: AnyObject {
-    func showToDoList(_ toDoList: [ToDoEntity])
     func displayTodosCount(_ todosCountString: String)
+    func displayTodos(_ todos: [ToDoEntity])
 }
 
 class ToDoListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var todosCountToolBarItem: UIBarButtonItem!
     
     var presenter: ToDoListPresenterProtocol?
@@ -45,7 +46,7 @@ class ToDoListViewController: UIViewController {
 }
 
 extension ToDoListViewController: ToDoListViewProtocol {
-    func showToDoList(_ toDoList: [ToDoEntity]) {
+    func displayTodos(_ toDoList: [ToDoEntity]) {
         self.todos = toDoList
         tableView.reloadData()
     }
@@ -69,5 +70,11 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource{
         cell.configure(with: todo)
         
         return cell
+    }
+}
+
+extension ToDoListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.didSearch(query: searchText)
     }
 }
