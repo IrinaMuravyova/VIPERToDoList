@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct ToDoAPIResponse: Decodable {
+    let todos: [ToDoItemAPI]
+}
+
+struct ToDoItemAPI: Decodable {
+    let id: Int
+    let todo: String
+    let completed: Bool
+    let userId: Int
+}
