@@ -39,8 +39,9 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
     }
     
     func didSearch( query: String) {
-        let filteredTodos = interactor.search(in: allTodos, with: query)
-        view?.displayTodos(filteredTodos)
+        interactor.search(in: allTodos, with: query) { [weak self] filteredTodos in
+            self?.view?.displayTodos(filteredTodos)
+        }
     }
     
     func todosCountString(_ todosCount: Int) {

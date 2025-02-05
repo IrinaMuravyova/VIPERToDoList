@@ -9,7 +9,7 @@ import Foundation
 
 protocol ToDoListInteractorProtocol: AnyObject {
     func loadToDoList()
-    func search(in todos: [ToDoEntity], with query: String) -> [ToDoEntity]
+    func search(in todos: [ToDoEntity], with query: String, completion: @escaping ([ToDoEntity]) -> Void)
 }
 
 class ToDoListInteractor {
@@ -34,12 +34,23 @@ extension ToDoListInteractor: ToDoListInteractorProtocol {
         }
     }
     
-    func search(in todos: [ToDoEntity], with query: String) -> [ToDoEntity] {
-        guard !query.isEmpty else { return todos }
-        
-        return todos.filter { $0.title.lowercased().contains(query.lowercased())
-            || (($0.description?.lowercased().contains(query.lowercased())) != nil)
-            || formatDate($0.createdAt).contains(query.lowercased())
+    func search(in todos: [ToDoEntity], with query: String, completion: @escaping ([ToDoEntity]) -> Void) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard !query.isEmpty else {
+                DispatchQueue.main.async {
+                    completion(todos)
+                }
+                return
+            }
+            
+            let filteredTodos = todos.filter { $0.title.lowercased().contains(query.lowercased())
+                || (($0.description?.lowercased().contains(query.lowercased())) != nil)
+                || self.formatDate($0.createdAt).contains(query.lowercased())
+            }
+            
+            DispatchQueue.main.async {
+                completion(filteredTodos)
+            }
         }
     }
     
