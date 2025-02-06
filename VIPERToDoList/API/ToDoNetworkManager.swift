@@ -12,6 +12,8 @@ protocol ToDoNetworkManagerProtocol {
 }
 
 class ToDoNetworkManager: ToDoNetworkManagerProtocol {
+    static let shared = ToDoNetworkManager()
+    
     func fetchToDos(completion: @escaping (Result<[ToDoEntity], any Error>) -> Void) {
         let urlString = "https://dummyjson.com/todos/"
         guard let url = URL(string: urlString) else {
@@ -19,7 +21,7 @@ class ToDoNetworkManager: ToDoNetworkManagerProtocol {
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -34,12 +36,11 @@ class ToDoNetworkManager: ToDoNetworkManagerProtocol {
                 let decodedResponse = try JSONDecoder().decode(ToDoAPIResponse.self, from: data)
                 let todos = decodedResponse.todos.map { todo in
                     ToDoEntity(
-                        id: todo.id,
+                        id: self?.intToUUID(todo.id) ?? UUID(),
                         title: todo.todo,
                         description: nil,  // В API нет описания
                         completed: todo.completed,
-                        createdAt: Date(),  // Использую текущую дату
-                        userId: todo.userId
+                        createdAt: Date() // Использую текущую дату
                     )
                 }
                 completion(.success(todos))
@@ -51,5 +52,9 @@ class ToDoNetworkManager: ToDoNetworkManagerProtocol {
         task.resume()
     }
     
-    
+    func intToUUID(_ int: Int) -> UUID {
+        let uuidString = String(int)
+        let uuid = UUID(uuidString: uuidString) ?? UUID()
+        return uuid
+    }
 }

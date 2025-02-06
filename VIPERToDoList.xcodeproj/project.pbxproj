@@ -31,6 +31,12 @@
 		8816488B2D5257FF00756A61 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816488A2D5257FF00756A61 /* TaskDetailViewController.swift */; };
 		8816488D2D52580600756A61 /* TaskDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816488C2D52580600756A61 /* TaskDetailRouter.swift */; };
 		881648912D525B6400756A61 /* ToDoAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881648902D525B6400756A61 /* ToDoAPIModels.swift */; };
+		88D73A562D547CB0001FD13C /* NewToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D73A552D547CB0001FD13C /* NewToDoViewController.swift */; };
+		88D73A582D547CBF001FD13C /* NewToDoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D73A572D547CBF001FD13C /* NewToDoPresenter.swift */; };
+		88D73A5A2D547CCE001FD13C /* NewToDoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D73A592D547CCE001FD13C /* NewToDoInteractor.swift */; };
+		88D73A5C2D547CDA001FD13C /* NewToDoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D73A5B2D547CDA001FD13C /* NewToDoRouter.swift */; };
+		88D73A5E2D547CEF001FD13C /* NewToDoModuleConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D73A5D2D547CEF001FD13C /* NewToDoModuleConfigure.swift */; };
+		88D73A612D54A5B7001FD13C /* ToDoCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88D73A5F2D54A5B7001FD13C /* ToDoCD.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +85,12 @@
 		8816488A2D5257FF00756A61 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		8816488C2D52580600756A61 /* TaskDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailRouter.swift; sourceTree = "<group>"; };
 		881648902D525B6400756A61 /* ToDoAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAPIModels.swift; sourceTree = "<group>"; };
+		88D73A552D547CB0001FD13C /* NewToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoViewController.swift; sourceTree = "<group>"; };
+		88D73A572D547CBF001FD13C /* NewToDoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoPresenter.swift; sourceTree = "<group>"; };
+		88D73A592D547CCE001FD13C /* NewToDoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoInteractor.swift; sourceTree = "<group>"; };
+		88D73A5B2D547CDA001FD13C /* NewToDoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoRouter.swift; sourceTree = "<group>"; };
+		88D73A5D2D547CEF001FD13C /* NewToDoModuleConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoModuleConfigure.swift; sourceTree = "<group>"; };
+		88D73A602D54A5B7001FD13C /* ToDoCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoCD.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				881648702D5213D100756A61 /* ToDoCoreDataManager.swift */,
+				88D73A5F2D54A5B7001FD13C /* ToDoCD.xcdatamodeld */,
 				881648722D5213E800756A61 /* ToDoNetworkManager.swift */,
 				881648812D5225BF00756A61 /* ToDoListRepository.swift */,
 				881648902D525B6400756A61 /* ToDoAPIModels.swift */,
@@ -220,18 +233,23 @@
 			path = TaskDetail;
 			sourceTree = "<group>";
 		};
-		88D73A4F2D54798E001FD13C /* NewTaskModule */ = {
+		88D73A4F2D54798E001FD13C /* NewToDoModule */ = {
 			isa = PBXGroup;
 			children = (
+				88D73A552D547CB0001FD13C /* NewToDoViewController.swift */,
+				88D73A572D547CBF001FD13C /* NewToDoPresenter.swift */,
+				88D73A592D547CCE001FD13C /* NewToDoInteractor.swift */,
+				88D73A5B2D547CDA001FD13C /* NewToDoRouter.swift */,
+				88D73A5D2D547CEF001FD13C /* NewToDoModuleConfigure.swift */,
 			);
-			path = NewTaskModule;
+			path = NewToDoModule;
 			sourceTree = "<group>";
 		};
 		88D73A522D547BE9001FD13C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				881648742D52160400756A61 /* ToDoListModule */,
-				88D73A4F2D54798E001FD13C /* NewTaskModule */,
+				88D73A4F2D54798E001FD13C /* NewToDoModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -388,19 +406,25 @@
 				881648712D5213D100756A61 /* ToDoCoreDataManager.swift in Sources */,
 				881648422D52119100756A61 /* ToDoListViewController.swift in Sources */,
 				8816483E2D52119100756A61 /* AppDelegate.swift in Sources */,
+				88D73A582D547CBF001FD13C /* NewToDoPresenter.swift in Sources */,
 				881648822D5225BF00756A61 /* ToDoListRepository.swift in Sources */,
 				881648782D52185500756A61 /* ToDoListRouter.swift in Sources */,
+				88D73A612D54A5B7001FD13C /* ToDoCD.xcdatamodeld in Sources */,
 				881648852D5257DF00756A61 /* TaskDetailProtocols.swift in Sources */,
 				8816488D2D52580600756A61 /* TaskDetailRouter.swift in Sources */,
+				88D73A5E2D547CEF001FD13C /* NewToDoModuleConfigure.swift in Sources */,
 				881648872D5257E800756A61 /* TaskDetailInteractor.swift in Sources */,
 				8816488B2D5257FF00756A61 /* TaskDetailViewController.swift in Sources */,
 				881648802D52234A00756A61 /* ToDoEntity.swift in Sources */,
+				88D73A5C2D547CDA001FD13C /* NewToDoRouter.swift in Sources */,
 				8816487C2D52195100756A61 /* ToDoListModuleConfigure.swift in Sources */,
 				881648732D5213E800756A61 /* ToDoNetworkManager.swift in Sources */,
 				881648892D5257F300756A61 /* TaskDetailPresenter.swift in Sources */,
+				88D73A562D547CB0001FD13C /* NewToDoViewController.swift in Sources */,
 				880EBF6C2D533F8E00F3107C /* ToDoTableViewCell.swift in Sources */,
 				881648402D52119100756A61 /* SceneDelegate.swift in Sources */,
 				881648912D525B6400756A61 /* ToDoAPIModels.swift in Sources */,
+				88D73A5A2D547CCE001FD13C /* NewToDoInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +771,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88D73A5F2D54A5B7001FD13C /* ToDoCD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88D73A602D54A5B7001FD13C /* ToDoCD.xcdatamodel */,
+			);
+			currentVersion = 88D73A602D54A5B7001FD13C /* ToDoCD.xcdatamodel */;
+			name = ToDoCD.xcdatamodeld;
+			path = /Users/irinamuravyeva/Documents/MySWIFTApps/VIPERToDoList/VIPERToDoList/API/ToDoCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 881648322D52119100756A61 /* Project object */;
 }

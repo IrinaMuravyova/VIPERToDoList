@@ -98,6 +98,9 @@
                                     <barButtonItem id="vGu-Fg-Bob">
                                         <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large"/>
                                         <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <connections>
+                                            <segue destination="LM9-LA-K4Q" kind="show" id="EZ2-fM-8s7"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -126,7 +129,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773.28244274809163" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="801" y="-2"/>
+        </scene>
+        <!--New To Do View Controller-->
+        <scene sceneID="GdL-Nl-bOC">
+            <objects>
+                <viewController id="LM9-LA-K4Q" customClass="NewToDoViewController" customModule="VIPERToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mo5-fI-GiV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Jn-iA-pcW">
+                                <rect key="frame" x="16" y="103" width="361" height="695"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Задача кратко" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hjH-ry-HtK">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="vfq-Ma-4o2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xtc-J9-C9G">
+                                        <rect key="frame" x="0.0" y="41" width="361" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="VDe-M1-fCO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" textContentType="date-time"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Описание задачи" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="j56-Ti-t87">
+                                        <rect key="frame" x="0.0" y="57" width="361" height="588"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTG-ng-HLj">
+                                        <rect key="frame" x="0.0" y="645" width="361" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="KPu-94-lpu"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Сохранить"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Kvk-qd-qGu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1Jn-iA-pcW" firstAttribute="top" secondItem="Kvk-qd-qGu" secondAttribute="top" id="c4P-yq-t80"/>
+                            <constraint firstItem="1Jn-iA-pcW" firstAttribute="leading" secondItem="Kvk-qd-qGu" secondAttribute="leading" constant="16" id="mOX-2a-jQI"/>
+                            <constraint firstItem="Kvk-qd-qGu" firstAttribute="bottom" secondItem="1Jn-iA-pcW" secondAttribute="bottom" constant="20" id="ueH-fj-y2n"/>
+                            <constraint firstItem="Kvk-qd-qGu" firstAttribute="trailing" secondItem="1Jn-iA-pcW" secondAttribute="trailing" constant="16" id="xcJ-g5-eq1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Upr-0t-Wov">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="5TK-hg-5e4"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="MTG-ng-HLj" id="2Qy-YX-MbT"/>
+                        <outlet property="todoDateTF" destination="Xtc-J9-C9G" id="LYe-kc-tKd"/>
+                        <outlet property="todoDescriptionTF" destination="j56-Ti-t87" id="1fz-sF-GMi"/>
+                        <outlet property="todoTitleTF" destination="hjH-ry-HtK" id="bKk-MF-8n1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gvn-iV-QLT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1577.8625954198474" y="-2.1126760563380285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xCj-XU-aqN">

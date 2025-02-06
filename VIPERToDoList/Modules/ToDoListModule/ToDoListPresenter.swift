@@ -36,6 +36,7 @@ extension ToDoListPresenter: ToDoListPresenterProtocol {
     func didLoadToDoList(_ toDoList: [ToDoEntity]) {
         self.allTodos = toDoList
         view?.displayTodos(allTodos)
+        todosCountString(toDoList.count)
     }
     
     func didSearch( query: String) {

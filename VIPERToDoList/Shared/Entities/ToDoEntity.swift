@@ -8,10 +8,9 @@
 import Foundation
 
 struct ToDoEntity {
-    let id: Int
+    let id: UUID
     let title: String
     let description: String?
     let completed: Bool
     let createdAt: Date
-    let userId: Int
 }

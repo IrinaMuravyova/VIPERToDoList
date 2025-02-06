@@ -12,7 +12,7 @@ class ToDoListModuleConfigure {
         let interactor = ToDoListInteractor()
         let router = ToDoListRouter()
         let networkManager = ToDoNetworkManager()
-        let dataManager = ToDoCoreDataManager()
+        let dataManager = ToDoCoreDataManager.shared
         let repository = ToDoListRepository(networkManager: networkManager, dataManager: dataManager)
         let presenter = ToDoListPresenter(interactor: interactor, router: router)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
