@@ -140,7 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				881648832D5257B000756A61 /* TaskDetail */,
-				881648742D52160400756A61 /* ToDoList */,
+				88D73A522D547BE9001FD13C /* Modules */,
+				88D73A532D547BF2001FD13C /* Shared */,
 				8816486F2D52130500756A61 /* API */,
 				8816486D2D52127900756A61 /* Application */,
 				8816486E2D52129900756A61 /* Resources */,
@@ -195,17 +196,16 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		881648742D52160400756A61 /* ToDoList */ = {
+		881648742D52160400756A61 /* ToDoListModule */ = {
 			isa = PBXGroup;
 			children = (
 				880EBF6A2D533F7A00F3107C /* ToDoListView */,
-				8816487F2D52234A00756A61 /* ToDoEntity.swift */,
 				881648752D52173000756A61 /* ToDoListPresenter.swift */,
 				881648772D52185500756A61 /* ToDoListRouter.swift */,
 				881648792D5218C900756A61 /* ToDoListInteractor.swift */,
 				8816487B2D52195100756A61 /* ToDoListModuleConfigure.swift */,
 			);
-			path = ToDoList;
+			path = ToDoListModule;
 			sourceTree = "<group>";
 		};
 		881648832D5257B000756A61 /* TaskDetail */ = {
@@ -218,6 +218,38 @@
 				8816488C2D52580600756A61 /* TaskDetailRouter.swift */,
 			);
 			path = TaskDetail;
+			sourceTree = "<group>";
+		};
+		88D73A4F2D54798E001FD13C /* NewTaskModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewTaskModule;
+			sourceTree = "<group>";
+		};
+		88D73A522D547BE9001FD13C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				881648742D52160400756A61 /* ToDoListModule */,
+				88D73A4F2D54798E001FD13C /* NewTaskModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		88D73A532D547BF2001FD13C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				88D73A542D547C10001FD13C /* Entities */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		88D73A542D547C10001FD13C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				8816487F2D52234A00756A61 /* ToDoEntity.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
