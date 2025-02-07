@@ -94,7 +94,26 @@ extension ToDoCoreDataManager: ToDoCoreDataManagerProtocol {
     }
     
     func saveToDo(_ toDo: ToDoEntity, completion: @escaping (Result<Void, Error>) -> Void) {
-        //TODO: реализовать
+        print("Saving new todo: \(toDo)")  // Печать для отладки
+        DispatchQueue.main.async {
+            do {
+                let newToDo = ToDoCD(context: self.context)
+                newToDo.id = toDo.id
+                newToDo.title = toDo.title
+                newToDo.taskDescription = toDo.description
+                newToDo.completed = toDo.completed
+                newToDo.createdAt = toDo.createdAt
+
+                try self.context.save()
+
+                print("New todo saved: \(newToDo)") // Печать для отладки
+
+                completion(.success(()))
+            } catch {
+                print("Error saving new todo: \(error)") // Печать ошибки
+                completion(.failure(error))
+            }
+        }
     }
 }
 
