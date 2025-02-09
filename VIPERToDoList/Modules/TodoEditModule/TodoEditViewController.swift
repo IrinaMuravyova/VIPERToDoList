@@ -10,11 +10,14 @@ import UIKit
 protocol NewToDoViewProtocol: AnyObject {
     func showError(_ message: String)
     func dismiss()
-    func showSuccessMessage()
-    func showErrorMessage(_ message: String)
+    func todoAddSuccessed()
 }
 
-class NewToDoViewController: UIViewController {
+protocol NewToDoViewControllerDelegate: AnyObject {
+    func didAddNewToDo()
+}
+
+class TodoEditViewController: UIViewController {
     
     @IBOutlet weak var todoTitleTF: UITextField!
     @IBOutlet weak var todoDateTF: UITextField!
@@ -22,9 +25,19 @@ class NewToDoViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     var presenter: NewToDoPresenterProtocol?
+    weak var delegate: NewToDoViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if presenter == nil {
+            print("NewToDoViewController: Presenter is nil")
+        } else {
+            print("NewToDoViewController: Presenter exist")
+        }
+        
+        if presenter?.view == nil {
+            presenter?.view = self  // Устанавливаем view в presenter после того, как view загружена
+        }
         
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
     }
@@ -36,6 +49,7 @@ class NewToDoViewController: UIViewController {
         }
         let date = formatDate(input:todoDateTF.text ?? "") // при создании новой задачи дату по умолчанию ставлю сегодня - в ТЗ не уточнено, на вопросы по почте не ответили
         presenter?.saveToDo(title: title, description: todoDescriptionTF.text, completed: false, createdAt: date)
+
     }
     
     func formatDate(input: String) -> Date {
@@ -51,7 +65,7 @@ class NewToDoViewController: UIViewController {
     }
 }
 
-extension NewToDoViewController: NewToDoViewProtocol {
+extension TodoEditViewController: NewToDoViewProtocol {
     func showError(_ message: String) {
         let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -59,20 +73,11 @@ extension NewToDoViewController: NewToDoViewProtocol {
     }
         
     func dismiss() {
-        dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    func showSuccessMessage() {
-        let alert = UIAlertController(title: "Успех", message: "Задача сохранена", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ок", style: .default) { _ in
-            self.dismiss(animated: true)
-        })
-        present(alert, animated: true)
-    }
-
-    func showErrorMessage(_ message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ок", style: .default))
-        present(alert, animated: true)
+    func todoAddSuccessed() {
+        self.delegate?.didAddNewToDo()
+        self.dismiss()
     }
 }
